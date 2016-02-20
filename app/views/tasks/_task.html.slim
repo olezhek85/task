@@ -1,0 +1,52 @@
+tr.task-item id="task_#{ task.id }"  
+  td.task-status 
+    = check_box_tag task.id, task.id, task.status, class: "task-check", data: { updatestatus: "#{status_project_task_path(task.project, task)}" }
+    label
+  td.task-name
+    .left-border
+      .task-name-text
+      	  = task.name
+          span.label.label-danger.deadline
+            = task.deadline.strftime("%Y-%m-%d %H:%M %p") unless task.deadline.blank?
+  td.task-control
+    .control
+      ul
+          li
+  		    = link_to '', '', class: "sort"
+  		  li
+  		    = link_to '', '', class: "edit", data: { toggle: "modal", target: "#updatetask_#{task.id}" }
+  		  li
+  		    = link_to '', project_task_path(task.project, task), method: :delete, data: { confirm: 'Are you sure?' }, class: "delete", remote: true
+
+    div class="modal fade" id="updatetask_#{task.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      div class="modal-dialog" role="document"
+        div class="modal-content"
+          div class="modal-header"
+            button type="button" class="close" data-dismiss="modal" aria-label="Close"
+              span aria-hidden="true"
+                | &times;
+            h4 class="modal-title" id="myModalLabel" style="text-align: left;"
+              | Update Task
+
+          div class="modal-body"
+            = form_for([task.project, task], :method => :put, html: { class: "form-horizontal" }, remote: true) do |f|
+              div class="form-group"
+                = f.label :name, 'Task Name:', class: "col-sm-3 control-label"
+                div class="col-sm-9"
+                  = f.text_field :name, class: "form-control project-title"
+              div class="form-group"
+                label for="deadline" class="col-sm-3 control-label"
+                  | Deadline:
+                div class="col-sm-9"
+                  = f.datetime_select :deadline
+              div class="form-group"
+                label for="status" class="col-sm-3 control-label"
+                  | Is completed?
+                div class="col-sm-9"
+                  .checkbox.pull-left
+                    label
+                      = f.check_box :status
+              div class="modal-footer"
+                  button type="button" class="btn btn-default" data-dismiss="modal"
+                    | Close
+                  = f.submit "Update", class: "btn btn-primary"

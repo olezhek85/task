@@ -1,0 +1,310 @@
+body {
+  padding: 20px 0 0;
+  background-color: #ba680e;
+  background-image: asset-url('bg-body.png');
+  background-repeat: repeat-x;
+  background-attachment: fixed;
+}
+
+.logo {
+  font-size: 26px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 #fff;
+  text-align: center;
+  font-weight: bold;
+  margin: 20px 60px 40px;
+  cursor: default;
+
+  .small {
+    font-weight: normal;
+    font-size: 18px;
+  }
+}
+
+.projects {
+  margin: 0 0 20px;
+
+  .project-header {
+    background: #4e7fbc asset-url('bg-project-header.png') repeat-x 0 0;
+    border: 1px solid #315589;
+    position: relative;
+
+    .project-field {
+      background: transparent asset-url('icon-project.png') no-repeat 15px 50%;
+      padding: 0 80px 0 45px;
+    }
+
+    h2, input {
+      color: #fff;
+      font-size: 22px;
+      font-weight: normal;
+      line-height: 38px;
+      text-shadow: 1px 1px 0 #111;
+      overflow: hidden;
+      width: 100%;
+      height: 40px;
+      margin: 5px 0;
+      padding: 0 5px;
+      border: 1px solid transparent;
+    }
+
+    h2 {
+      cursor: default;
+    }
+
+    input {
+      background: #4e7fbc;
+      border: 1px solid #315589;
+      border-radius: 3px;
+
+      &:focus {
+        outline: none
+      }
+    }
+
+    .control {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+
+      ul {
+        margin: 0 0 0 -20px;
+      }
+
+      li {
+        border-left: 1px solid #5284bf;
+        margin: 0 0 0 10px;
+        padding: 0 0 0 10px;
+      }
+
+      .edit {
+        background: asset-url('icon-project-edit.png') no-repeat 50% 50%;
+      }
+
+      .delete {
+        background: asset-url('icon-project-delete.png') no-repeat 50% 50%;
+      }
+    }
+
+  &:hover {
+    .control {
+    	display: block;
+    	}
+  	}
+  }
+
+  .create-task-header {
+    background: #e1e1e1 asset-url('bg-create-task-header.png') repeat-x 0 0;
+    height: 50px;
+    border: 0 solid #abafa3;
+    border-width: 0 1px 1px;
+    padding: 8px 15px 0;
+
+    .create-task-in {
+      background: asset-url('icon-plus.png') no-repeat 0 50%;
+      padding: 0 0 0 34px;
+    }
+
+    input {
+      float: none;
+      border-left-color: #999;
+      border-top-color: #999;
+      border-bottom-color: #bbb;
+      box-shadow: none;
+    }
+
+    .add-task {
+      border: 1px solid #447557;
+      background: asset-url('bg-create-task-button.png') repeat-x 0 0;
+      z-index: 2;
+      outline: none;
+    }
+  }
+}
+
+.control {
+  overflow: hidden;
+  display: none;
+
+  ul {
+    margin: 0 0 0 -12px;
+    padding: 0;
+    word-spacing: -.3em;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 0 0 6px;
+    padding: 0 0 0 6px;
+    vertical-align: text-bottom;
+    word-spacing: normal;
+    border-left: 1px solid #ddd;
+  }
+
+  a {
+    display: block;
+    width: 16px;
+    height: 16px;
+    position: relative;
+  }
+}
+
+.task-list {
+  border: 1px solid #abafa3;
+  background: #f0ad4e;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+}
+
+.tasks {
+  width: 100%;
+  margin: -1px 0 0;
+}
+
+
+.task-status {
+  border-right: 1px solid #efdadf;
+  width: 50px;
+  text-align: center;
+
+  position: relative;
+
+  input[type="checkbox"] {
+    opacity: 0;
+    height: 16px;
+    width: 17px;
+    position: absolute;
+    top: 6px;
+    left: 20px;
+    z-index: 2;
+  }
+
+  input[type="checkbox"] + label{
+    background: asset-url("checkbox.png") 0 -16px no-repeat;
+    height: 16px;
+    width: 17px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 0 10px 20px;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    z-index: 1;
+  }
+
+  input[type="checkbox"]:checked + label{
+      background: asset-url("checkbox.png") left top no-repeat;
+      height: 16px;
+      width: 17px;
+      display: inline-block;
+      padding: 0 0 0 0px;
+  }
+
+}
+
+.task-name {
+  font-weight: bold;
+  color: #777;
+  padding: 0;
+  word-wrap: break-word;
+  word-break: break-all;
+  table-layout: fixed;
+
+  .left-border {
+    border-left: 1px solid #efdadf;
+    margin: 0 0 0 5px;
+    padding: 4px;
+  }
+
+  .task-name-text,
+  .task-name-field {
+    display: block;
+    border: 0;
+    padding: 4px 8px;
+    border-radius: 3px;
+    outline: none;
+    width: 100%;
+  }
+
+  .task-name-field {
+    background: #f9fcbb;
+    overflow: hidden;
+    min-height: 10px;
+  }
+
+  .task-done {
+    font-style: italic;
+    text-decoration: line-through;
+  }
+
+  .label {
+    float: right;
+    padding: 3px 6px;
+    margin: 1px 0px 0;
+  }
+}
+
+.task-control {
+  width: 96px;
+  border-left: 1px solid #e7ebea;
+  text-align: center;
+  padding: 4px 0 0;
+
+  a {
+    width: 14px;
+    height: 14px;
+  }
+
+  .sort {
+    background: asset-url('icon-task-sort.png') no-repeat 50% 50%;
+    cursor: move;
+  }
+
+  .edit {
+    background: asset-url('icon-task-edit.png') no-repeat 50% 50%;
+  }
+
+  .delete {
+    background: asset-url('icon-task-delete.png') no-repeat 50% 50%;
+  }
+}
+
+.task-item {
+  border-top: 1px solid #e7ebea;
+  background: #fff;
+
+  &:hover {
+    background: #fcfed5;
+
+    .task-control .control {
+      display: inline-block;
+    }
+  }
+
+  &.active {
+    background: #fcfed5;
+  }
+}
+
+.footer {
+  text-align: center;
+  padding: 40px 0 80px;
+
+  .icon-plus {
+      background: asset-url('icon-plus-add.png') no-repeat;
+      padding: 0 0 10px 34px;
+    }
+
+  .btn {
+    background: #4e7fbc asset-url('bg-project-header.png') repeat-x 0 0;
+    border-radius: 0;
+    font-weight: bold;
+  }
+
+}
+
+.error {
+  color: red;
+  margin-top: 5px;
+}
+

@@ -1,0 +1,8 @@
+$("#updateproject_<%= @project.id %>").modal('hide');
+
+$("#project_<%= @project.id %>").fadeOut(500, function () {
+
+	$(this).remove();
+	$(".projects").prepend('<%= j render @project %>');
+
+})

@@ -1,0 +1,51 @@
+.project id="project_#{ project.id }"
+	.project-header
+
+	  .project-field
+	    
+	    h2 = project.name
+
+	  .control
+	    ul
+	      li
+	        = link_to '', '', class: "edit", data: { toggle: "modal", target: "#updateproject_#{project.id}" }
+	      
+	      li
+	        = link_to '', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete", remote: true
+
+	= form_for([project, project.tasks.build], remote: true) do |f|
+	  .create-task-header
+	    .create-task-in.input-group
+	      = f.text_field :name, class: "form-control", placeholder: "Start typing here to create a task..."
+	      span.input-group-btn
+	        = button_tag "Add Task", class: "btn btn-success add-task"
+
+
+	- if project.tasks.any?
+	  .task-list
+	    table.tasks id="tasks_#{project.id}"
+	      tbody data-update-url=sort_project_tasks_path(project)
+	        = render project.tasks.all
+
+	br
+
+		div class="modal fade" id="updateproject_#{project.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		  div class="modal-dialog" role="document"
+		    div class="modal-content"
+		      div class="modal-header"
+		        button type="button" class="close" data-dismiss="modal" aria-label="Close"
+		          span aria-hidden="true"
+		            | &times;
+		        h4 class="modal-title" id="myModalLabel"
+		          | Update Project
+
+		      div class="modal-body"
+		        = form_for(project, :method => :put, html: { class: "form-horizontal" }, remote: true) do |f|
+		          div class="form-group"
+		            = f.label :name, 'Project Name:', class: "col-sm-3 control-label"
+		            div class="col-sm-9"
+		              = f.text_field :name, class: "form-control project-title"
+		          div class="modal-footer"
+		              button type="button" class="btn btn-default" data-dismiss="modal"
+		                | Close
+		              = f.submit "Update", class: "btn btn-primary"

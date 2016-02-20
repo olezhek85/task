@@ -1,0 +1,5 @@
+$("#create-project-modal").modal('hide');
+$(".project-title").val('');
+
+$(".projects").append('<%= j render @project %>');
+$("#project_<%= @project.id %>").hide().fadeIn(1000);

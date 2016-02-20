@@ -1,0 +1,36 @@
+doctype 5
+html lang="en"
+  head
+  	meta charset="utf-8"
+  	meta http-equiv="X-UA-Compatible" content="IE=edge"
+  	meta name="viewport" content="width=device-width, initial-scale=1"
+
+    title Task Manager - RubyGarage 
+  	
+  	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true	
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  	= csrf_meta_tags
+
+
+  body
+
+  	.container
+
+  	  .row
+
+  	  	.col-xs-8.col-xs-offset-2
+
+  	  	  - if user_signed_in?
+  	  	    .user-control.pull-right
+  	  	      = link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary btn-xs"
+
+  	  	  - flash.each do |key, value|
+              - unless value.blank?
+                - type = key == 'alert' ? 'danger' : 'success'
+                div class="alert alert-#{type} fade in"
+                  a.close href='#' data-dismiss='alert' ×
+                  = value
+
+  		  == yield
+
+  

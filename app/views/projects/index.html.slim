@@ -1,0 +1,34 @@
+.logo
+  | simple todo list
+  .small from ruby garage
+
+.projects data-update-url=sort_projects_path
+    
+      = render @projects
+
+.row
+  .col-xs-12.footer
+      = link_to content_tag(:span, nil, class: "icon-plus") + 'Add TODO List', '', class: "btn btn-lg btn-primary", data: { toggle: "modal", target: "#create-project-modal" }
+
+div class="modal fade" id="create-project-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  div class="modal-dialog" role="document"
+    div class="modal-content"
+      div class="modal-header"
+        button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true"
+            | &times;
+        h4 class="modal-title" id="myModalLabel"
+          | Create Project
+
+      div class="modal-body"
+        = form_for(@project, html: { class: "form-horizontal" }, remote: true) do |f|
+          div class="form-group"
+            = f.label :name, 'Project Name:', class: "col-sm-3 control-label"
+            div class="col-sm-9"
+              = f.text_field :name, class: "form-control project-title", placeholder: "Start typing here to create a project..."
+          div class="modal-footer"
+              button type="button" class="btn btn-default" data-dismiss="modal"
+                | Close
+              = f.submit "Create", class: "btn btn-primary"
+      
+            

@@ -1,0 +1,8 @@
+$("#updatetask_<%= @task.id %>").modal('hide');
+
+$("#task_<%= @task.id %>").fadeOut(500, function () {
+
+	$(this).remove();
+	$("table[class = 'tasks'][id = tasks_<%= @project.id %>]").prepend('<%= j render @task %>');
+
+})
