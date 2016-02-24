@@ -33,7 +33,7 @@ gem 'spring', group: :development
 
 gem 'devise'
 gem 'slim'
-gem 'puma'
+gem "passenger"
 gem 'acts_as_list'
 gem 'jquery-ui-rails'
 
