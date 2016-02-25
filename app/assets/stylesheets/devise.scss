@@ -1,0 +1,33 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.authform {
+  padding-top: 30px;
+  max-width: 320px;
+  margin: 0 auto;
+
+  form {
+  	@extend .well;
+    @extend .well-lg;
+    padding-bottom: 40px;
+  }
+
+  .right {
+  	float: right !important;
+  }
+
+  .button {
+    @extend .btn;
+    @extend .btn-primary;
+  }
+
+  #error_explanation {
+    @extend .alert;
+    @extend .alert-danger;
+  }
+
+  #error_explanation h2 {
+    font-size: 16px;
+  }
+
+}

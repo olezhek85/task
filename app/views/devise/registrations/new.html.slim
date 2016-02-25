@@ -1,22 +1,20 @@
-.signup.col-md-6.col-md-offset-3
-
+.authform
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| 
-    = devise_error_messages! 
-
-    h2
+    h3
       | Sign up
-
-      = f.label :email, class: "sr-only"
+    = devise_error_messages!
+    
+    .form-group
+      = f.label :email
       = f.email_field :email, class: "form-control", placeholder: "Email address", autofocus: true
 
-  
-      = f.label :password, class: "sr-only"
+    .form-group  
+      = f.label :password
       = f.password_field :password, class: "form-control", autocomplete: "off", placeholder: "Password"
-
-      = f.label :password_confirmation, class: "sr-only"
+    
+    .form-group
+      = f.label :password_confirmation
       = f.password_field :password_confirmation, class: "form-control", autocomplete: "off", placeholder: "Password confirmation"
-  
 
-    = f.submit "Sign up", class: "btn btn-lg btn-primary btn-block"
-  
-  = render "devise/shared/links"
+    = f.submit "Sign up", class: "button right"
+

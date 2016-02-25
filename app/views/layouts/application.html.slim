@@ -28,7 +28,7 @@ html lang="en"
               - unless value.blank?
                 - type = key == 'alert' ? 'danger' : 'success'
                 div class="alert alert-#{type} fade in"
-                  a.close href='#' data-dismiss='alert' ×
+                  a.close href='#' data-dismiss='alert' &times;
                   = value
 
   		  == yield
