@@ -41,6 +41,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
 gem "jquery-validation-rails"
+gem 'newrelic_rpm'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
