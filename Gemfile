@@ -44,6 +44,8 @@ gem "jquery-validation-rails"
 gem 'newrelic_rpm'
 gem "recaptcha", require: "recaptcha/rails"
 
+gem 'rails_admin'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
