@@ -5,7 +5,7 @@ html lang="en"
   	meta http-equiv="X-UA-Compatible" content="IE=edge"
   	meta name="viewport" content="width=device-width, initial-scale=1"
 
-    title Task Manager - RubyGarage 
+    title Task Manager - &copy; Ruby Garage
   	
   	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true	
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
@@ -22,7 +22,7 @@ html lang="en"
 
   	  	  - if user_signed_in?
   	  	    .user-control.pull-right
-  	  	      = link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary btn-xs"
+  	  	      = link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary btn-xs logout"
 
   	  	  - flash.each do |key, value|
               - unless value.blank?
@@ -32,5 +32,7 @@ html lang="en"
                   = value
 
   		  == yield
+          .copyright
+            | &copy; Ruby Garage
 
   

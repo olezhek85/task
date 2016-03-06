@@ -17,8 +17,8 @@
 	  .create-task-header
 	    .create-task-in.input-group
 	      = f.text_field :name, class: "form-control", placeholder: "Start typing here to create a task..."
-	      span.input-group-btn
-	        = button_tag "Add Task", class: "btn btn-success add-task"
+	      span.input-group-btn.add-task
+	        = button_tag "Add Task", class: "btn add-task"
 
 
 	- if project.tasks.any?
